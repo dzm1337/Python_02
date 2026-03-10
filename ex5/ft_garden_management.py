@@ -8,32 +8,29 @@ class ErrorSunlightHours(ErrorNamePlant):
 	pass
 
 class GardenManager():
-	def __init__(self, plants=[]):
-		self._plants = plants
+	def __init__(self):
+		self._plants = [] 
 		
 	def add_plant(self, plant):
-		if (len(plant) == 0) or (plant == None):
+		if not plant:
 			raise ErrorNamePlant(f"Error adding plant: Plant name cannot be empty!")
 		print(f"Added {plant} to Garden succesfully")
 		self._plants.append(plant)
 
 	def water_plant(self, plant):
-		if (len(plant) == 0) or (plant == None):
+		if not plant:
 			raise ErrorNamePlant(f"Error watering plant: Plant name cannot be empty!")
+		if plant not in self._plants:
+			self._plants.append(plant)
 		print(f"Watering {plant} - success")
-		self._plants.append(plant)
 
 	def plant_health(self, plant: str, water_level: int, sunlight_hours: int):
-		if (len(plant) == 0 or plant == None):
+		if not plant:
 			raise ErrorNamePlant(f"Error: The name cannot be empty!")
-		if (water_level > 10):
+		if not (1 <= water_level <= 10):
 			raise ErrorWaterLevel(f"Error: Water level {water_level} is too high (max 10)")
-		elif (water_level < 1):
-			raise ErrorWaterLevel(f"Error: Water level {water_level} is too low (min 1)")
-		if (sunlight_hours > 12):
+		if not (2 <= sunlight_hours <= 12):
 			raise ErrorSunlightHours(f"Error: Sunlight hours {sunlight_hours} is too high (max 12)")
-		elif (sunlight_hours < 2):
-			raise ErrorSunlightHours(f"Error: Sunlight hours {sunlight_hours} is too low (min 2)")
 		print(f"{plant}: healthy (water: {water_level}, sun: {sunlight_hours})")
 
 	@staticmethod
@@ -45,6 +42,7 @@ class GardenManager():
 		print("System recovered and continuing...")
 
 def test_garden_management():
+	print("=== Garden Management System ===")
 	garden = GardenManager()
 	plants = ["tomato", "lettuce", ""]
 	
