@@ -3,15 +3,17 @@ class PlantNameError(Exception):
 
 
 def test_name_plant(name: str) -> None:
-    if name is None:
-        raise PlantNameError(f"Error: Cannot water {name} - invalid plant!")
-    print(f"Watering {name}")
+    if not 'A' <= name[0] <= 'Z':
+        raise PlantNameError(f"Caught PlantError: Invalid "
+                             f"plant name to water: '{name}'\n..."
+                             f"ending tests and returning to main")
+    print(f"Watering {name} [OK]")
 
 
 def test_watering_system():
     print("=== Garden Watering System ===")
 
-    plants = ["tomato", "lettuce", "carrots"]
+    plants = ["Tomato", "Lettuce", "Carrots"]
     print("\nTesting normal watering...")
 
     try:
@@ -21,10 +23,9 @@ def test_watering_system():
     except PlantNameError as e:
         print(e)
     finally:
-        print("Closing watering system (cleanup)")
-    print("Watering completed successfully")
-    print("\nTesting with error...")
-    plants_error = ["tomato", None]
+        print("Closing watering system")
+    print("\nTesting invalid plants...")
+    plants_error = ["Tomato", "lettuce"]
 
     try:
         print("Opening watering system")
@@ -33,7 +34,7 @@ def test_watering_system():
     except PlantNameError as e:
         print(e)
     finally:
-        print("Closing watering system (cleanup)")
+        print("Closing watering system")
     print("\nCleanup always happens, even with errors!")
 
 

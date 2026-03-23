@@ -48,7 +48,7 @@ def main():
             elif error == "test_plant":
                 water_test(30)
         except GardenError as e:
-            print(f"Caught a garden error: {e}")
+            print(e)
     print("\nAll custom error types work correctly!")
 
 
