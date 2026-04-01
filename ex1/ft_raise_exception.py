@@ -1,4 +1,4 @@
-def input_temperature(data):
+def input_temperature(data) -> int:
     temperature = int(data)
     if temperature > 40:
         raise Exception(f"{temperature}°C is"
@@ -17,13 +17,12 @@ def test_temperature():
         print(f"\nInput data is '{value}'")
         try:
             temperature = input_temperature(value)
-            print("Temperature is now " + str(temperature) + "°C")
+            print(f"Temperature is now {temperature} °C")
         except Exception as e:
-            print("Caught input_temperature error: " + str(e))
+            print(f"Caught input_temperature error: {e}")
 
 
 if __name__ == "__main__":
-
     print("=== Garden Temperature Checker ===")
     test_temperature()
     print("\nAll tests completed - program didn't crash!")

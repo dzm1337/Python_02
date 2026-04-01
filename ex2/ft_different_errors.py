@@ -1,4 +1,4 @@
-def ft_different_errors():
+def ft_different_errors() -> None:
     try:
         print("Testing operation 0...")
         int("abc")
@@ -25,7 +25,7 @@ def ft_different_errors():
     except (ValueError,
             FileNotFoundError,
             ZeroDivisionError,
-            ValueError) as e:
+            TypeError) as e:
         print(f"Caught: {e}")
     else:
         print("Operation completed successfully")
@@ -33,4 +33,5 @@ def ft_different_errors():
 
 
 if __name__ == "__main__":
+    print("=== Garden Error Types Demo ===")
     ft_different_errors()

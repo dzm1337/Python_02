@@ -22,7 +22,7 @@ def water_test(water: int) -> None:
     print("There's enough water in the tank!")
 
 
-def main():
+if __name__ == "__main__":
     print("=== Custom Garden Errors Demo ===")
 
     try:
@@ -39,7 +39,7 @@ def main():
 
     print(" ")
     print("Testing catching all garden errors...")
-    errors = ["test_water", "test_plant"]
+    errors: list[str] = ["test_water", "test_plant"]
 
     for error in errors:
         try:
@@ -50,7 +50,3 @@ def main():
         except GardenError as e:
             print(e)
     print("\nAll custom error types work correctly!")
-
-
-if __name__ == "__main__":
-    main()

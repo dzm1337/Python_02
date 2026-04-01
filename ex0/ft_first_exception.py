@@ -1,4 +1,4 @@
-def check_temperature(temp_str: str):
+def check_temperature(temp_str: str) -> None:
     try:
         temp_int = int(temp_str)
     except ValueError as e:
@@ -9,7 +9,7 @@ def check_temperature(temp_str: str):
 
 if __name__ == "__main__":
     print("=== Garden Temperature Checker ===\n")
-    temperatures = [25, 'abc']
+    temperatures: list = [25, 'abc']
     for temp in temperatures:
         print(f"Input data is '{temp}'")
         check_temperature(temp)
